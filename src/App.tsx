@@ -194,6 +194,7 @@ function App() {
             >
               <div>
                 <h3>{delivery.name}</h3>
+                <p>{delivery.fiscalID}</p>
                 <p>
                   {delivery.address} - {delivery.complement}
                 </p>
