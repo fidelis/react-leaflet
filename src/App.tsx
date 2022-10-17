@@ -1,7 +1,7 @@
 import "leaflet/dist/leaflet.css";
 
 import React, { FormEvent, useState } from "react";
-import { Map, Marker, Popup, TileLayer } from "react-leaflet";
+import { MapContainer as Leafletmap, Marker, Popup, TileLayer } from "react-leaflet";
 import Leaflet from "leaflet";
 import { v4 as uuidv4 } from "uuid";
 
@@ -156,7 +156,7 @@ function App() {
         </form>
       </main>
 
-      <Map
+      <Leafletmap
         center={location}
         zoom={15}
         style={{ width: "100%", height: "100%" }}
@@ -194,7 +194,7 @@ function App() {
             </Popup>
           </Marker>
         ))}
-      </Map>
+      </Leafletmap>
     </div>
   );
 }
