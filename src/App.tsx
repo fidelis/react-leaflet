@@ -112,7 +112,7 @@ function App() {
       <main>
         <form onSubmit={handleSubmit} className="landing-page-form">
           <fieldset>
-            <legend>Entregas</legend>
+            <legend>Pontos da Rota</legend>
 
             <div className="input-block">
               <label htmlFor="name">Nome</label>
