@@ -139,7 +139,7 @@ function App() {
               <AsyncSelect
                 placeholder="Digite seu endereço..."
                 classNamePrefix="filter"
-                cacheOptions
+                //cacheOptions
                 loadOptions={loadOptions}
                 onChange={handleChangeSelect}
                 value={address}
