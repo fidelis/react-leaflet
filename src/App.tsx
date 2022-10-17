@@ -8,19 +8,11 @@ import { v4 as uuidv4 } from "uuid";
 import { fetchLocalMapBox } from "./apiMapBox";
 import AsyncSelect from "react-select/async";
 
-import mapPackage from "./package.svg";
 import mapPin from "./pin.svg";
 
 import "./App.css";
 
-const initialPosition = { lat: -22.2154042, lng: -54.8331331 };
-
-const mapPackageIcon = Leaflet.icon({
-  iconUrl: mapPackage,
-  iconSize: [58, 68],
-  iconAnchor: [29, 68],
-  popupAnchor: [170, 2],
-});
+const initialPosition = { lat: -16.6446324, lng: -49.416115 };
 
 const mapPinIcon = Leaflet.icon({
   iconUrl: mapPin,
@@ -36,6 +28,7 @@ interface Delivery {
   complement: string;
   latitude: number;
   longitude: number;
+  fiscalID: number;
 }
 
 type Position = {
@@ -56,6 +49,8 @@ function App() {
   } | null>(null);
 
   const [location, setLocation] = useState(initialPosition);
+
+  const [fiscalID, setFiscalID] = useState(0);
 
   const loadOptions = async (inputValue: any, callback: any) => {
     const response = await fetchLocalMapBox(inputValue);
@@ -101,6 +96,7 @@ function App() {
         complement,
         latitude: location.lat,
         longitude: location.lng,
+        fiscalID,
       },
     ]);
 
@@ -108,6 +104,7 @@ function App() {
     setAddress(null);
     setComplement("");
     setPosition(null);
+    setFiscalID(0);
   }
 
   return (
@@ -121,9 +118,19 @@ function App() {
               <label htmlFor="name">Nome</label>
               <input
                 id="name"
-                placeholder="Digite seu nome"
+                placeholder="Digite o nome"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
+              />
+            </div>
+
+            <div className="input-block">
+              <label htmlFor="fiscalID">CNPF/CPF</label>
+              <input
+                id="fiscalID"
+                placeholder="Digite o CNPJ ou CPF"
+                value={fiscalID}
+                onChange={(event) => setFiscalID(event.target.value)}
               />
             </div>
 
@@ -176,7 +183,7 @@ function App() {
         {deliveries.map((delivery) => (
           <Marker
             key={delivery.id}
-            icon={mapPackageIcon}
+            icon={mapPinIcon}
             position={[delivery.latitude, delivery.longitude]}
           >
             <Popup
