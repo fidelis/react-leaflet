@@ -2,9 +2,9 @@
   "name": "blog-react-maps-leaflet",
   "author": {
     "name": "Marcelo Fideles",
-    "email": "fidelis.marcelo@gmail.com"
+    "email": "marcelo.fidelis@grupojosealves.com"
   },
-  "description": "Introdution to React Maps with Leaflet",
+  "description": "Gerador de Rotas do CLSIV",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
